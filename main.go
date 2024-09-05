@@ -1,5 +1,21 @@
 package main
 
+import (
+	"time"
+
+	"github.com/bmeek0110/pokedexxcli/internal/pokeapi"
+)
+
+type config struct {
+	pokeapiClient           pokeapi.Client
+	nextLocationAreaURL     *string
+	previousLocationAreaURL *string
+}
+
 func main() {
-	startRepl()
+	cfg := config{
+		pokeapiClient: pokeapi.NewClient(time.Hour),
+	}
+
+	startRepl(&cfg)
 }
