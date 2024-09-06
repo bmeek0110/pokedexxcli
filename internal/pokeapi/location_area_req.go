@@ -8,7 +8,7 @@ import (
 )
 
 func (c *Client) ListLocationAreas(locationAreaName *string) (LocationAreasResp, error) {
-	endpoint := "/location-area" + locationAreaName
+	endpoint := "/location-area"
 	fullURL := baseURL + endpoint
 
 	dat, ok := c.cache.Get(fullURL)
@@ -55,23 +55,19 @@ func (c *Client) ListLocationAreas(locationAreaName *string) (LocationAreasResp,
 
 }
 
-func (c *Client) GetLocationArea(locationAreaName string) (locationArea, error) {
-	endpoint := "/location-area"
+func (c *Client) GetLocationArea(locationAreaName string) (LocationArea, error) {
+	endpoint := "/location-area/" + locationAreaName
 	fullURL := baseURL + endpoint
-
-	if pageURL != nil {
-		fullURL = *pageURL
-	}
 
 	dat, ok := c.cache.Get(fullURL)
 	if ok {
 		fmt.Println("cache hit!")
 		locationArea := LocationArea{}
-		err := json.Unmarshal(dat, &locationAreasResp)
+		err := json.Unmarshal(dat, &locationArea)
 		if err != nil {
 			return LocationArea{}, err
 		}
-		return locationAreasResp, nil
+		return locationArea, nil
 	}
 	fmt.Println("cache miss!")
 

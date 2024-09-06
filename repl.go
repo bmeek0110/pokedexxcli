@@ -22,7 +22,7 @@ func startRepl(cfg *config) {
 		}
 		commandName := cleaned[0]
 		args := []string{}
-		if len(cleaned) > 1{
+		if len(cleaned) > 1 {
 			args = cleaned[1:]
 		}
 
@@ -64,9 +64,24 @@ func getCommands() map[string]cliCommand {
 			callback:    callbackMapb,
 		},
 		"explore": {
-			name:        "explore" {location_area},
+			name:        "explore {location_area}",
 			description: "Lists the pokemon in a location area",
-			callback:    callbackExplore(),
+			callback:    callbackExplore,
+		},
+		"catch": {
+			name:        "catch {pokemon_name}",
+			description: "Attempt to catch a pokemon and add it to your pokedex",
+			callback:    callbackCatch,
+		},
+		"inspect": {
+			name:        "inspect {pokemon_name}",
+			description: "View information about a caught pokemon",
+			callback:    callbackInspect,
+		},
+		"pokedex": {
+			name:        "pokedex",
+			description: "View all of the pokemon in your pokedex",
+			callback:    callbackPokedex,
 		},
 		"exit": {
 			name:        "exit",
