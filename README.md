@@ -2,6 +2,8 @@
 
 Exploringing all of the pokemon regions, catching pokemon, getting spooky, and making my babe proud one eevee at a time!
 
+ - To launch run ./pokedexxcli to enter the command line, and then you can run the below commands.
+
 Here are your available commands:
  - pokedex: View all of the pokemon in your pokedex
  - exit: Turns off the Pokedex
